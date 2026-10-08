@@ -175,7 +175,7 @@ body {
   max-height: 84vh;
   object-fit: contain;
   image-rendering: auto;
-  border: 4px solid #6ff2c8;          /* màu viền */
+  border: 2px solid #6ff2c8;          /* màu viền */
   border-radius: 6px;
   box-shadow: 0 0 14px rgba(111, 242, 200, 0.45);
 }
