@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Art Room</title>
+  <!-- Font Yuji Mai (Google Fonts) cho tên các mục -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,13 +16,19 @@
 
     <!-- ========== CỘT TRÁI: tiêu đề + mục ========== -->
     <aside class="side">
-      <!-- Tiêu đề: ảnh PNG trong suốt của bạn.
-           Đổi ảnh: sửa src. Đổi kích thước: sửa --title-width trong style.css -->
-      <img class="title-img" src="title.png" alt="Art Room">
+      <!-- Tiêu đề: ảnh title.png của bạn (nếu chưa upload thì tự ẩn đi).
+           Đổi kích thước: sửa --title-width trong style.css -->
+      <img class="title-img" src="title.png" alt="Art Room" onerror="this.style.display='none'">
+
+      <!-- Ảnh PNG thêm vào phần tiêu đề.
+           Đổi kích thước: sửa --deco-width trong style.css -->
+      <img class="title-deco"
+           src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicBeYOt2OEomomrWawDlRTIbaebKq7ZS7hwS8j1NGosQPj__uLXsQous5xzd9z54qOUEGvPFL0BbQ80nIPzU_KbQM-unGqWC5vaoY-yZoZrsPkJUvKLylPQxpaIQS2JCPtZkXqLzgG1q_dEjUdKxMYolDDKTkPrM0nAOKJTNpXZOzEjGXNPJKQhPtM4z0/s1600/howl_s_moving_castle-removebg-preview.png"
+           alt="">
 
       <nav class="tabs">
         <button class="tab" id="tab-drawings" data-target="drawings">drawings</button>
-        <button class="tab active" id="tab-zine" data-target="zine">zine</button>
+        <button class="tab active" id="tab-zine" data-target="zine">poetry zine</button>
       </nav>
     </aside>
 
