@@ -9,8 +9,7 @@
 <body>
 
   <header class="top">
-    <!-- Tiêu đề: ảnh PNG trong suốt của bạn.
-         Upload ảnh vào repo với tên title.png (hoặc đổi tên ở src bên dưới).
+    <!-- Tiêu đề: ảnh PNG trong suốt của bạn (title.png).
          Muốn đổi kích thước: sửa --title-width trong style.css -->
     <img class="title-img" src="title.png" alt="Art Room">
 
@@ -24,7 +23,8 @@
 
     <!-- ========== DRAWINGS ========== -->
     <section id="drawings" class="panel">
-      <p class="soon">đang cập nhật...</p>
+      <div id="gallery" class="gallery"></div>
+      <p id="gallery-msg" class="soon"></p>
     </section>
 
     <!-- ========== ZINE ========== -->
@@ -46,6 +46,14 @@
     </section>
 
   </main>
+
+  <!-- Xem ảnh phóng to -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lb-btn lb-close" aria-label="Đóng">×</button>
+    <button class="lb-btn lb-prev" aria-label="Ảnh trước">‹</button>
+    <img class="lb-img" alt="">
+    <button class="lb-btn lb-next" aria-label="Ảnh sau">›</button>
+  </div>
 
   <!-- Script của Heyzine để mở zine dạng pop-up -->
   <script src="https://cdnm.heyzine.com/release/addons.7.min.js" style="display:none;" onload="heyzinea.addons.init();"></script>
