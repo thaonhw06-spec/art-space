@@ -1,8 +1,10 @@
 /* ============ CHỈNH NHANH Ở ĐÂY ============ */
 :root {
-  --title-width: 300px;   /* kích thước ảnh tiêu đề (title.png) */
-  --cover-width: 150px;   /* kích thước bìa mỗi zine */
-  --drawing-height: 180px; /* chiều cao mỗi tranh trong mục drawings */
+  --title-width: 260px;    /* kích thước ảnh tiêu đề */
+  --side-width: 300px;     /* độ rộng cột bên trái */
+  --row-height: 330px;     /* chiều cao mỗi hàng tranh (to hơn = ít tranh mỗi hàng) */
+  --gap: 12px;             /* khoảng cách giữa các tranh */
+  --cover-width: 150px;    /* kích thước bìa mỗi zine */
   --color-zine: #00ffff;
   --color-drawings: #ffff00;
 }
@@ -18,7 +20,7 @@ body {
   color: #fff;
   font-family: "Times New Roman", Times, serif;
 
-  /* Nền starry.gif lặp lại, giữ nguyên kích thước gốc nên không bị vỡ nét */
+  /* Nền lặp lại, giữ nguyên kích thước gốc nên không bị vỡ nét */
   background-color: #0b0b1f;
   background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-E9DmfpOwN9nO-NP8AjwAWSaL4SuKJoV0eEzj6Xk7xb_pU2n54D0mw4012x6xDxhFMVhf7SmsF3JeJ4Ml5MLiIMFB9HQFzpHpIKz58NxynmZIxsk9OMU78Ixf5PHN7G7Qi2jZj2dPHTyv3XT6yNBCD_2FEHU3ptA-Es7WByEfbQp5XDodlHPszpGm0Dc/s1600/Twinkling-stars.gif");
   background-repeat: repeat;
@@ -27,26 +29,43 @@ body {
   image-rendering: pixelated;
 }
 
-/* ---------- Đầu trang ---------- */
-.top {
-  text-align: center;
-  padding: 48px 20px 8px;
+/* ---------- Bố cục 2 cột ---------- */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
 }
 
+.side {
+  flex: 0 0 var(--side-width);
+  position: sticky;      /* cột trái đứng yên khi cuộn tranh */
+  top: 56px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- Cột trái ---------- */
 .title-img {
   display: block;
-  margin: 0 auto 24px;
   width: var(--title-width);
-  max-width: 90%;
+  max-width: 100%;
   height: auto;
+  margin: 0;
   image-rendering: auto;
 }
 
-/* ---------- Hai mục: chỉ là chữ gạch chân ---------- */
 .tabs {
   display: flex;
-  justify-content: center;
-  gap: 36px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 64px;
 }
 
 .tab {
@@ -75,13 +94,7 @@ body {
   color: var(--color-drawings);
 }
 
-/* ---------- Nội dung ---------- */
-.room {
-  max-width: 1100px;
-  margin: 36px auto 60px;
-  padding: 0 16px;
-}
-
+/* ---------- Các mục ---------- */
 .panel {
   display: none;
 }
@@ -94,7 +107,7 @@ body {
 .shelf {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 24px;
 }
 
@@ -116,38 +129,45 @@ body {
   image-rendering: auto;
 }
 
-/* ---------- Drawings: hàng tranh giữ nguyên tỉ lệ ---------- */
+/* ---------- Drawings: các hàng tranh đều nhau, không cắt tranh ---------- */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
+  gap: var(--gap);
+}
+
+/* Giữ hàng cuối không bị kéo dãn quá khổ */
+.gallery::after {
+  content: "";
+  flex-grow: 100000;
 }
 
 .thumb {
+  display: block;
+  flex: 1 1 300px;       /* script.js sẽ tính lại theo tỉ lệ từng tranh */
   padding: 0;
   border: none;
   background: none;
+  line-height: 0;
   cursor: zoom-in;
-  transition: transform 0.2s;
+  transition: opacity 0.2s;
 }
 
 .thumb:hover {
-  transform: translateY(-4px);
+  opacity: 0.85;
 }
 
 .thumb img {
   display: block;
-  height: var(--drawing-height);
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
   image-rendering: auto;
 }
 
 .soon {
-  text-align: center;
   opacity: 0.6;
   font-size: 1.1rem;
+  margin: 0;
 }
 
 .soon:empty {
@@ -175,7 +195,7 @@ body {
   max-height: 84vh;
   object-fit: contain;
   image-rendering: auto;
-  border: 2px solid #6ff2c8;          /* màu viền */
+  border: 4px solid #6ff2c8;          /* màu viền */
   border-radius: 6px;
   box-shadow: 0 0 14px rgba(111, 242, 200, 0.45);
 }
@@ -270,33 +290,58 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+/* ---------- Điện thoại / màn hình hẹp: cột trái chuyển lên trên ---------- */
+@media (max-width: 800px) {
+  :root {
+    --row-height: 170px;
+    --gap: 8px;
+    --title-width: 220px;
+  }
+
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+    padding: 36px 16px 60px;
+  }
+
+  .side {
+    position: static;
+    flex: none;
+    text-align: center;
+  }
+
+  .title-img {
+    margin: 0 auto;
+  }
+
+  .tabs {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 28px;
+  }
+
+  .tab {
+    font-size: 1.3rem;
+  }
+
+  .shelf {
+    justify-content: center;
+  }
+
   .lb-img {
     max-width: 88vw;
     border-width: 3px;
   }
+
   .lb-prev,
   .lb-next {
     width: 48px;
     height: 48px;
     margin-top: -24px;
   }
+
   .lb-prev { left: 0; }
   .lb-next { right: 0; }
-}
-
-/* ---------- Điện thoại ---------- */
-@media (max-width: 600px) {
-  :root {
-    --drawing-height: 130px;
-  }
-  .tabs {
-    gap: 28px;
-  }
-  .tab {
-    font-size: 1.3rem;
-  }
-  .gallery {
-    gap: 10px;
-  }
 }
