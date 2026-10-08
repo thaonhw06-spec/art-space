@@ -1,6 +1,6 @@
 /* ============ CHỈNH NHANH Ở ĐÂY ============ */
 :root {
-  --title-width: 360px;   /* kích thước ảnh tiêu đề (title.png) */
+  --title-width: 300px;   /* kích thước ảnh tiêu đề (title.png) */
   --cover-width: 150px;   /* kích thước bìa mỗi zine */
   --drawing-height: 180px; /* chiều cao mỗi tranh trong mục drawings */
   --color-zine: #00ffff;
