@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Room</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Art Room</h1>
+    <nav class="tabs">
+      <button class="tab active" data-target="zine">Zine</button>
+      <button class="tab" data-target="single">Tranh đơn</button>
+    </nav>
+  </header>
+
+  <main class="room">
+
+    <!-- ========== MỤC ZINE ========== -->
+    <section id="zine" class="panel active">
+
+      <!-- Mỗi zine là một khối <article class="zine"> như dưới đây.
+           Muốn thêm zine mới: copy nguyên khối này, dán bên dưới, rồi sửa
+           tên, năm, mô tả và link trong src="..." -->
+      <article class="zine">
+        <h2>Tên zine</h2>
+        <p class="meta">2026</p>
+        <div class="embed">
+          <iframe
+            src="https://heyzine.com/flip-book/YOUR_ID.html"
+            allowfullscreen="allowfullscreen"
+            scrolling="no"
+            loading="lazy"
+            title="Tên zine"></iframe>
+        </div>
+        <p class="desc">Mô tả ngắn về zine (có thể xóa dòng này nếu không cần).</p>
+      </article>
+
+    </section>
+
+    <!-- ========== MỤC TRANH ĐƠN ========== -->
+    <section id="single" class="panel">
+      <p class="soon">Đang cập nhật...</p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

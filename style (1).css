@@ -1,0 +1,137 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+
+  /* Nền starry.gif lặp lại, giữ nguyên kích thước gốc nên không bị vỡ nét */
+  background-color: #0b0b1f;
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii3Nn_A9YPx3FcxS99MNMCr3eMxJ12tVGYsqeVNd8j7mprl1DTc0p9aZz3S3kzRuzNUVnD-eyqfmAOLeCCdRs9Cf-hICqJd_KZZI7UY01bwMN3k3d1ZZYNLawCfG0RFqva20aTcREiIXAUKlAwApaCxq6RdlbgMOhFGaGuXHdffCJRHI_Y14DlHVniNVo/s1600/starry.gif");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+  image-rendering: pixelated;
+}
+
+/* ---------- Đầu trang ---------- */
+.top {
+  text-align: center;
+  padding: 48px 20px 16px;
+}
+
+.top h1 {
+  margin: 0 0 20px;
+  font-weight: normal;
+  font-size: 2.2rem;
+  letter-spacing: 0.08em;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.tab {
+  font: inherit;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(11, 11, 31, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.tab.active {
+  background: #fff;
+  color: #0b0b1f;
+}
+
+/* ---------- Khung nội dung ---------- */
+.room {
+  max-width: 960px;
+  margin: 24px auto 60px;
+  padding: 0 16px;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* ---------- Zine ---------- */
+.zine {
+  background: rgba(11, 11, 31, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.zine h2 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+.zine .meta {
+  margin: 4px 0 16px;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.zine .desc {
+  margin: 16px 0 0;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ---------- Tranh đơn (tạm) ---------- */
+.soon {
+  text-align: center;
+  opacity: 0.7;
+  padding: 40px 0;
+}
+
+/* ---------- Điện thoại ---------- */
+@media (max-width: 600px) {
+  .top h1 {
+    font-size: 1.7rem;
+  }
+  .zine {
+    padding: 16px;
+  }
+  .embed {
+    aspect-ratio: 4 / 5;
+  }
+}
