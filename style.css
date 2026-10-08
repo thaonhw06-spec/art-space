@@ -1,0 +1,25 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+
+  /* Nền starry.gif lặp lại, giữ nguyên kích thước gốc nên không bị vỡ nét */
+  background-color: #0b0b1f; /* màu dự phòng trong lúc ảnh đang tải */
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii3Nn_A9YPx3FcxS99MNMCr3eMxJ12tVGYsqeVNd8j7mprl1DTc0p9aZz3S3kzRuzNUVnD-eyqfmAOLeCCdRs9Cf-hICqJd_KZZI7UY01bwMN3k3d1ZZYNLawCfG0RFqva20aTcREiIXAUKlAwApaCxq6RdlbgMOhFGaGuXHdffCJRHI_Y14DlHVniNVo/s1600/starry.gif");
+  background-repeat: repeat;   /* lặp theo cả chiều ngang và dọc */
+  background-size: auto;       /* không phóng to/thu nhỏ ảnh */
+  background-position: top left;
+  image-rendering: pixelated;  /* nếu trình duyệt có scale (zoom), giữ nét pixel sắc */
+}
+
+.room {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  text-align: center;
+}
