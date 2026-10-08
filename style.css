@@ -5,8 +5,8 @@
   --row-height: 330px;     /* chiều cao mỗi hàng tranh (to hơn = ít tranh mỗi hàng) */
   --gap: 12px;             /* khoảng cách giữa các tranh */
   --cover-width: 150px;    /* kích thước bìa mỗi zine */
-  --color-zine: #00ffff;
-  --color-drawings: #ffff00;
+  --deco-width: 220px;     /* kích thước ảnh PNG thêm dưới tiêu đề */
+  --color-tab: #eaf6ff;    /* màu chữ tên các mục */
 }
 /* ============================================ */
 
@@ -60,24 +60,34 @@ body {
   image-rendering: auto;
 }
 
+/* Ảnh PNG thêm vào phần tiêu đề */
+.title-deco {
+  display: block;
+  width: var(--deco-width);
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0 0;
+  image-rendering: auto;
+}
+
 .tabs {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
-  margin-top: 64px;
+  margin-top: 56px;
 }
 
 .tab {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1.5rem;
+  font-family: "Yuji Mai", "Times New Roman", Times, serif;
+  font-size: 1.7rem;
+  color: var(--color-tab);
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  opacity: 0.5;
+  text-decoration: none;   /* không gạch chân */
+  opacity: 0.5;            /* mục đang mở sáng rõ, mục còn lại mờ hơn */
   transition: opacity 0.2s;
 }
 
@@ -86,13 +96,6 @@ body {
   opacity: 1;
 }
 
-#tab-zine {
-  color: var(--color-zine);
-}
-
-#tab-drawings {
-  color: var(--color-drawings);
-}
 
 /* ---------- Các mục ---------- */
 .panel {
@@ -311,8 +314,10 @@ body {
     text-align: center;
   }
 
-  .title-img {
-    margin: 0 auto;
+  .title-img,
+  .title-deco {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .tabs {
