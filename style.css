@@ -5,7 +5,7 @@
   --row-height: 330px;     /* chiều cao mỗi hàng tranh (to hơn = ít tranh mỗi hàng) */
   --gap: 12px;             /* khoảng cách giữa các tranh */
   --cover-width: 150px;    /* kích thước bìa mỗi zine */
-  --deco-width: 220px;     /* kích thước ảnh PNG thêm dưới tiêu đề */
+  --deco-width: 190px;     /* kích thước ảnh PNG thêm dưới tiêu đề */
   --color-tab: #eaf6ff;    /* màu chữ tên các mục */
 }
 /* ============================================ */
