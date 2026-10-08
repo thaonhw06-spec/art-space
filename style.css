@@ -2,6 +2,7 @@
 :root {
   --title-width: 360px;   /* kích thước ảnh tiêu đề (title.png) */
   --cover-width: 150px;   /* kích thước bìa mỗi zine */
+  --drawing-height: 180px; /* chiều cao mỗi tranh trong mục drawings */
   --color-zine: #00ffff;
   --color-drawings: #ffff00;
 }
@@ -19,7 +20,7 @@ body {
 
   /* Nền starry.gif lặp lại, giữ nguyên kích thước gốc nên không bị vỡ nét */
   background-color: #0b0b1f;
-  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii3Nn_A9YPx3FcxS99MNMCr3eMxJ12tVGYsqeVNd8j7mprl1DTc0p9aZz3S3kzRuzNUVnD-eyqfmAOLeCCdRs9Cf-hICqJd_KZZI7UY01bwMN3k3d1ZZYNLawCfG0RFqva20aTcREiIXAUKlAwApaCxq6RdlbgMOhFGaGuXHdffCJRHI_Y14DlHVniNVo/s1600/starry.gif");
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-E9DmfpOwN9nO-NP8AjwAWSaL4SuKJoV0eEzj6Xk7xb_pU2n54D0mw4012x6xDxhFMVhf7SmsF3JeJ4Ml5MLiIMFB9HQFzpHpIKz58NxynmZIxsk9OMU78Ixf5PHN7G7Qi2jZj2dPHTyv3XT6yNBCD_2FEHU3ptA-Es7WByEfbQp5XDodlHPszpGm0Dc/s1600/Twinkling-stars.gif");
   background-repeat: repeat;
   background-size: auto;
   background-position: top left;
@@ -38,7 +39,7 @@ body {
   width: var(--title-width);
   max-width: 90%;
   height: auto;
-  image-rendering: auto;   /* ảnh tiêu đề giữ mượt, không bị pixel hóa */
+  image-rendering: auto;
 }
 
 /* ---------- Hai mục: chỉ là chữ gạch chân ---------- */
@@ -76,7 +77,7 @@ body {
 
 /* ---------- Nội dung ---------- */
 .room {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 36px auto 60px;
   padding: 0 16px;
 }
@@ -115,19 +116,111 @@ body {
   image-rendering: auto;
 }
 
-/* ---------- Drawings (tạm) ---------- */
+/* ---------- Drawings: hàng tranh giữ nguyên tỉ lệ ---------- */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.thumb {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  transition: transform 0.2s;
+}
+
+.thumb:hover {
+  transform: translateY(-4px);
+}
+
+.thumb img {
+  display: block;
+  height: var(--drawing-height);
+  width: auto;
+  max-width: 100%;
+  image-rendering: auto;
+}
+
 .soon {
   text-align: center;
   opacity: 0.6;
   font-size: 1.1rem;
 }
 
+.soon:empty {
+  display: none;
+}
+
+/* ---------- Xem ảnh phóng to ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lb-img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.lb-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lb-btn:hover {
+  opacity: 1;
+}
+
+.lb-close {
+  top: 12px;
+  right: 20px;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.lb-prev,
+.lb-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3.5rem;
+  padding: 0 16px;
+}
+
+.lb-prev { left: 4px; }
+.lb-next { right: 4px; }
+
 /* ---------- Điện thoại ---------- */
 @media (max-width: 600px) {
+  :root {
+    --drawing-height: 130px;
+  }
   .tabs {
     gap: 28px;
   }
   .tab {
     font-size: 1.3rem;
+  }
+  .gallery {
+    gap: 10px;
   }
 }
