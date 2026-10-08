@@ -8,44 +8,49 @@
 </head>
 <body>
 
-  <header class="top">
-    <!-- Tiêu đề: ảnh PNG trong suốt của bạn (title.png).
-         Muốn đổi kích thước: sửa --title-width trong style.css -->
-    <img class="title-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicBeYOt2OEomomrWawDlRTIbaebKq7ZS7hwS8j1NGosQPj__uLXsQous5xzd9z54qOUEGvPFL0BbQ80nIPzU_KbQM-unGqWC5vaoY-yZoZrsPkJUvKLylPQxpaIQS2JCPtZkXqLzgG1q_dEjUdKxMYolDDKTkPrM0nAOKJTNpXZOzEjGXNPJKQhPtM4z0/s1600/howl_s_moving_castle-removebg-preview.png" alt="Art Room">
+  <div class="layout">
 
-    <nav class="tabs">
-      <button class="tab" id="tab-drawings" data-target="drawings">drawings</button>
-      <button class="tab active" id="tab-zine" data-target="zine">zine</button>
-    </nav>
-  </header>
+    <!-- ========== CỘT TRÁI: tiêu đề + mục ========== -->
+    <aside class="side">
+      <!-- Tiêu đề: ảnh PNG trong suốt của bạn.
+           Đổi ảnh: sửa src. Đổi kích thước: sửa --title-width trong style.css -->
+      <img class="title-img" src="title.png" alt="Art Room">
 
-  <main class="room">
+      <nav class="tabs">
+        <button class="tab" id="tab-drawings" data-target="drawings">drawings</button>
+        <button class="tab active" id="tab-zine" data-target="zine">zine</button>
+      </nav>
+    </aside>
 
-    <!-- ========== DRAWINGS ========== -->
-    <section id="drawings" class="panel">
-      <div id="gallery" class="gallery"></div>
-      <p id="gallery-msg" class="soon"></p>
-    </section>
+    <!-- ========== CỘT PHẢI: nội dung ========== -->
+    <main class="content">
 
-    <!-- ========== ZINE ========== -->
-    <section id="zine" class="panel active">
-      <div class="shelf">
+      <!-- DRAWINGS -->
+      <section id="drawings" class="panel">
+        <div id="gallery" class="gallery"></div>
+        <p id="gallery-msg" class="soon"></p>
+      </section>
 
-        <!-- Mỗi zine là một thẻ <a> như dưới đây.
-             Muốn thêm zine mới: copy nguyên thẻ <a>...</a>, dán bên cạnh,
-             rồi đổi mã zine (d1522d9acc) ở cả href lẫn src của ảnh bìa. -->
-        <a href="https://heyzine.com/flip-book/d1522d9acc.html"
-           target="_BLANK"
-           class="heyzine-link fp-link"
-           data-heyzine-open="modal">
-          <img src="https://cdnm.heyzine.com/flip-book/cover/d1522d9acc.jpg"
-               class="fp-thumb" alt="zine">
-        </a>
+      <!-- ZINE -->
+      <section id="zine" class="panel active">
+        <div class="shelf">
 
-      </div>
-    </section>
+          <!-- Mỗi zine là một thẻ <a> như dưới đây.
+               Muốn thêm zine mới: copy nguyên thẻ <a>...</a>, dán bên cạnh,
+               rồi đổi mã zine (d1522d9acc) ở cả href lẫn src của ảnh bìa. -->
+          <a href="https://heyzine.com/flip-book/d1522d9acc.html"
+             target="_BLANK"
+             class="heyzine-link fp-link"
+             data-heyzine-open="modal">
+            <img src="https://cdnm.heyzine.com/flip-book/cover/d1522d9acc.jpg"
+                 class="fp-thumb" alt="zine">
+          </a>
 
-  </main>
+        </div>
+      </section>
+
+    </main>
+  </div>
 
   <!-- Xem ảnh phóng to -->
   <div id="lightbox" class="lightbox" hidden>
