@@ -47,6 +47,12 @@ async function loadList() {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 }
 
+// Chiều cao mỗi hàng lấy từ --row-height trong style.css
+function rowHeight() {
+  const v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row-height'));
+  return v || 330;
+}
+
 async function initGallery() {
   let names = [];
 
@@ -79,10 +85,16 @@ async function initGallery() {
     btn.type = 'button';
 
     const img = document.createElement('img');
-    img.src = src;
     img.alt = 'drawing';
-    img.loading = 'lazy';
 
+    // Khi ảnh tải xong, xếp theo tỉ lệ thật của tranh để các hàng đều nhau, không cắt tranh
+    img.addEventListener('load', () => {
+      const ratio = img.naturalWidth / img.naturalHeight;
+      btn.style.flexGrow = ratio;
+      btn.style.flexBasis = ratio * rowHeight() + 'px';
+    });
+
+    img.src = src;
     btn.appendChild(img);
     btn.addEventListener('click', () => openLightbox(i));
     gallery.appendChild(btn);
